@@ -34,10 +34,8 @@ qplot(date, steps, data=activity, stat="summary", fun.y="sum", geom="bar")
 ![plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/activityTotalStepsByDay.png)
 
 Get the mean an median of steps by day:
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 summary(totalStepsByDay$x)
-Min.  1st Qu.  Median   Mean   3rd Qu.  Max.    NA's 
-41    8841     10760    10770  13290    21190   8 
 ```
 The **mean** total number of steps taken per day is **10770**
 The **median** total number of steps taken per day is **10760**
@@ -76,34 +74,17 @@ for (i in 1:17568) {
   }
 }
 ```
-Old dataset: 
-```{r, echo=FALSE}
-head(activity)
-  steps       date interval    day
-1    NA 2012-10-01        0 Monday
-2    NA 2012-10-01        5 Monday
-3    NA 2012-10-01       10 Monday
-4    NA 2012-10-01       15 Monday
-5    NA 2012-10-01       20 Monday
-6    NA 2012-10-01       25 Monday
+Old dataset: Mean = 10770 // Median = 10760
+```{r, echo=TRUE}
 summary(totalStepsByDay$x)
 Min.  1st Qu.  Median   Mean   3rd Qu.  Max.    NA's 
 41    8841     10760    10770  13290    21190   8 
 ```
-New dataset:
-```{r, echo=FALSE}
-head(noNAactivity)
-  steps       date interval    day
-1     2 2012-10-01        0 Monday
-2     0 2012-10-01        5 Monday
-3     0 2012-10-01       10 Monday
-4     0 2012-10-01       15 Monday
-5     0 2012-10-01       20 Monday
-6     2 2012-10-01       25 Monday
+New dataset: Mean = 10770 // Median = 10760
+```{r, echo=TRUE}
 summary(totalStepsByDayFILLED$x)
-Min.  1st Qu.  Median   Mean   3rd Qu.   Max.    NA's 
-41    8841     10760    10770  13290     21190   8 
 ```
+
 Histogram:
 ```{r, echo=TRUE}
 qplot(date, steps, data=noNAactivity, stat="summary", fun.y="sum", geom="bar")
