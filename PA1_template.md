@@ -8,7 +8,7 @@ output:
 
 ## Loading and preprocessing the data
 
-Download into 'dataset.zip / extract into 'activity.csv'
+Download into 'dataset.zip' / extract into 'activity.csv'
 
 ```r
 fileurl <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
@@ -33,12 +33,10 @@ totalStepsByDay <- aggregate(activity$steps, by=list(Category=activity$date), FU
 Histogram:
 
 ```r
+library(ggplot2)
 qplot(date, steps, data=activity, stat="summary", fun.y="sum", geom="bar")
 ```
 
-```
-## Error in eval(expr, envir, enclos): could not find function "qplot"
-```
 ![plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/activityTotalStepsByDay.png)
 
 Get the mean an median of steps by day:
@@ -80,7 +78,6 @@ Plot:
 plot(meanStepsByInterval, type="l", xlab="Interval", ylab="Steps")
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
 ![plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/meanStepsByInterval.png)
 
 
@@ -121,18 +118,17 @@ summary(totalStepsByDayFILLED$x)
 ```
 
 ```
-## Error in summary(totalStepsByDayFILLED$x): object 'totalStepsByDayFILLED' not found
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##      41    8841   10760   10770   13290   21190       8
 ```
 
 Histogram:
 
 ```r
+library(ggplot2)
 qplot(date, steps, data=noNAactivity, stat="summary", fun.y="sum", geom="bar")
 ```
 
-```
-## Error in eval(expr, envir, enclos): could not find function "qplot"
-```
 ![Plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/noNAactivityTotalStepsByDay.png)
 
 
@@ -157,5 +153,4 @@ with(meanStepsByIntervalWeekdays, {
 })
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png) 
 ![Plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/diffWeekdayWeekend.png)
