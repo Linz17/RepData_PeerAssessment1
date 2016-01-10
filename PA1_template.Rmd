@@ -34,8 +34,8 @@ qplot(date, steps, data=activity, stat="summary", fun.y="sum", geom="bar")
 ![plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/activityTotalStepsByDay.png)
 
 Get the mean an median of steps by day:
-```{r, echo=TRUE}
-summary(totalStepsByDay$x, na.rm=TRUE)
+```{r, echo=FALSE}
+summary(totalStepsByDay$x)
 Min.  1st Qu.  Median   Mean   3rd Qu.  Max.    NA's 
 41    8841     10760    10770  13290    21190   8 
 ```
@@ -77,7 +77,7 @@ for (i in 1:17568) {
 }
 ```
 Old dataset: 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 head(activity)
   steps       date interval    day
 1    NA 2012-10-01        0 Monday
@@ -91,7 +91,7 @@ Min.  1st Qu.  Median   Mean   3rd Qu.  Max.    NA's
 41    8841     10760    10770  13290    21190   8 
 ```
 New dataset:
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 head(noNAactivity)
   steps       date interval    day
 1     2 2012-10-01        0 Monday
