@@ -77,8 +77,6 @@ for (i in 1:17568) {
 Old dataset: Mean = 10770 // Median = 10760
 ```{r, echo=TRUE}
 summary(totalStepsByDay$x)
-Min.  1st Qu.  Median   Mean   3rd Qu.  Max.    NA's 
-41    8841     10760    10770  13290    21190   8 
 ```
 New dataset: Mean = 10770 // Median = 10760
 ```{r, echo=TRUE}
