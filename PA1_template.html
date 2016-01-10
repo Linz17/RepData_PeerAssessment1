@@ -1,6 +1,6 @@
 <h2>Loading and preprocessing the data</h2>
 
-<p>Download into &#39;dataset.zip / extract into &#39;activity.csv&#39;</p>
+<p>Download into &#39;dataset.zip&#39; / extract into &#39;activity.csv&#39;</p>
 
 <pre><code class="r">fileurl &lt;- &quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;
 download.file(fileurl, destfile = &quot;dataset.zip&quot;, method = &quot;curl&quot;)
@@ -22,11 +22,10 @@ activity &lt;- read.csv(&quot;activity.csv&quot;)
 
 <p>Histogram:</p>
 
-<pre><code class="r">qplot(date, steps, data=activity, stat=&quot;summary&quot;, fun.y=&quot;sum&quot;, geom=&quot;bar&quot;)
+<pre><code class="r">library(ggplot2)
+qplot(date, steps, data=activity, stat=&quot;summary&quot;, fun.y=&quot;sum&quot;, geom=&quot;bar&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;qplot&quot;
-</code></pre>
 
 <p><img src="https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/activityTotalStepsByDay.png" alt="plot"/></p>
 
@@ -102,15 +101,14 @@ for (i in 1:17568) {
 <pre><code class="r">summary(totalStepsByDayFILLED$x)
 </code></pre>
 
-<pre><code>## Error in summary(totalStepsByDayFILLED$x): object &#39;totalStepsByDayFILLED&#39; not found
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##      41    8841   10760   10770   13290   21190       8
 </code></pre>
 
 <p>Histogram:</p>
 
-<pre><code class="r">qplot(date, steps, data=noNAactivity, stat=&quot;summary&quot;, fun.y=&quot;sum&quot;, geom=&quot;bar&quot;)
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;qplot&quot;
+<pre><code class="r">library(ggplot2)
+qplot(date, steps, data=noNAactivity, stat=&quot;summary&quot;, fun.y=&quot;sum&quot;, geom=&quot;bar&quot;)
 </code></pre>
 
 <p><img src="https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/noNAactivityTotalStepsByDay.png" alt="Plot"/></p>
