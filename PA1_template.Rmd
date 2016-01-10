@@ -70,6 +70,7 @@ for (i in 1:17568) {
 }
 ```
 Old dataset: 
+```{r, echo=TRUE}
 head(activity)
   steps       date interval    day
 1    NA 2012-10-01        0 Monday
@@ -81,8 +82,9 @@ head(activity)
 summary(totalStepsByDay$x)
 Min.  1st Qu.  Median   Mean   3rd Qu.  Max.    NA's 
 41    8841     10760    10770  13290    21190   8 
-
+```
 New dataset:
+```{r, echo=TRUE}
 head(noNAactivity)
   steps       date interval    day
 1     2 2012-10-01        0 Monday
@@ -94,7 +96,7 @@ head(noNAactivity)
 summary(totalStepsByDayFILLED$x)
 Min.  1st Qu.  Median   Mean   3rd Qu.   Max.    NA's 
 41    8841     10760    10770  13290     21190   8 
-
+```
 Histogram:
 ```{r, echo=TRUE}
 qplot(date, steps, data=noNAactivity, stat="summary", fun.y="sum", geom="bar")
