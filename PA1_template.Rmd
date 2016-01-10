@@ -31,6 +31,7 @@ Histogram:
 ```{r, echo=TRUE}
 qplot(date, steps, data=activity, stat="summary", fun.y="sum", geom="bar")
 ```
+![plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/activityTotalStepsByDay.png)
 
 Get the mean an median of steps by day:
 ```{r, echo=TRUE}
@@ -56,8 +57,10 @@ The 5-minute interval, on average across all the days in the dataset, that conta
 
 Plot:
 ```{r, echo=TRUE}
-plot(totalStepsByInterval, type="l")
+plot(meanStepsByInterval, type="l", xlab="Interval", ylab="Steps")
 ```
+![plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/meanStepsByInterval.png)
+
 
 ## Imputing missing values
 Total number of missing values in the dataset: **2304**
@@ -105,6 +108,8 @@ Histogram:
 ```{r, echo=TRUE}
 qplot(date, steps, data=noNAactivity, stat="summary", fun.y="sum", geom="bar")
 ```
+![Plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/noNAactivityTotalStepsByDay.png)
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
@@ -112,9 +117,16 @@ Subsetting into 2 datasets: weekdaysActivity and weekendActivity.
 ```{r, echo=TRUE}
 weekdaysActivity <- noNAactivity[noNAactivity$day %in% c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"),]
 weekendActivity <- noNAactivity[noNAactivity$day %in% c("Saturday", "Sunday"),]
+meanStepsByIntervalWeekdays <- aggregate(weekdaysActivity$steps, by=list(Category=weekdaysActivity$interval), FUN=mean, na.rm=TRUE)
+meanStepsByIntervalWeekends <- aggregate(weekendActivity$steps, by=list(Category=weekendActivity$interval), FUN=mean, na.rm=TRUE)
 ```
 
 Plot:
 ```{r, echo=TRUE}
-plot(totalStepsByInterval, type="l")
+par(mfcol = c(2,1))
+with(meanStepsByIntervalWeekdays, {
+  plot(meanStepsByIntervalWeekdays, type = "l", xlab="Interval", ylab="Steps")
+  plot(meanStepsByIntervalWeekends, type = "l", xlab="Interval", ylab="Steps")
+})
 ```
+![Plot](https://raw.githubusercontent.com/Linz17/RepData_PeerAssessment1/master/diffWeekdayWeekend.png)
